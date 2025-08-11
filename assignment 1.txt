@@ -1,0 +1,167 @@
+//Question 1
+def insert_at_end(arr, val):
+    arr.append(val)  
+    return arr
+
+arr1 = [1, 2, 3, 4, 5]
+val1 = 90
+print(insert_at_end(arr1, val1))  
+
+arr2 = [1, 2, 3]
+val2 = 50
+print(insert_at_end(arr2, val2))  
+
+// Question 2
+int largest(int arr[], int n) {
+    // Code Here
+    int max_val = arr[0];
+    for (int i = 1; i < n; ++i) {
+        if (arr[i] > max_val) {
+            max_val = arr[i];
+        }
+    }
+    return max_val;
+}
+
+
+//Question 3
+int getSecondLargest(int *arr, int n) {
+    // code here
+    if (n < 2) return -1; 
+
+    int largest = INT_MIN;
+    int secondLargest = INT_MIN;
+
+    for (int i = 0; i < n; ++i) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        }
+        else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    return (secondLargest == INT_MIN) ? -1 : secondLargest;
+}
+
+
+
+
+//Question 4
+class Solution {
+  public:
+    void pushZerosToEnd(vector<int>& arr) {
+        // code here
+        int n = arr.size();
+    vector<int> temp(n);
+    int j = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] != 0)
+            temp[j++] = arr[i];
+    }
+    while (j < n) {
+        temp[j++] = 0;
+    }
+    for (int i = 0; i < n; i++)
+        arr[i] = temp[i];
+
+    }
+};
+
+
+//Question 5
+// User function Template for C++
+
+class Solution {
+  public:
+    void rotate(vector<int> &arr) {
+        // code here
+        int n = arr.size();
+    int lastElement = arr[n-1];
+    for (int i = n - 1; i > 0; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[0] = lastElement;
+
+    }
+};
+
+//Question 6
+bool isSorted(int arr[], int n) {
+    // Code Here
+     if (n == 0 || n == 1)
+        return true;
+    return arr[n - 1] >= arr[n - 2] && isSorted(arr, n - 1);
+}
+
+//Question 7
+def reverse_string(s):
+    return s[::-1]
+result = reverse_string("hello")
+print(result)  
+
+//Question 8
+import re
+def is_palindrome(s):
+    cleaned = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+    return cleaned == cleaned[::-1]
+
+string = "A man, a plan, a canal: Panama"
+print(is_palindrome(string))  
+
+//Question 9
+def countFreq(arr):
+    n = len(arr)
+    
+    visited = [False] * n
+    ans = []
+    for i in range(n):
+        
+        if visited[i]:
+            continue
+        count = 1
+        for j in range(i + 1, n):
+            if arr[i] == arr[j]:
+                visited[j] = True
+                count += 1
+        ans.append([arr[i], count])
+    return ans
+
+if __name__ == '__main__':
+    arr = [10, 20, 10, 5, 20]
+    ans = countFreq(arr)
+    ans.sort(key=lambda x: x[0])
+    for x in ans:
+        print(x[0], x[1])
+
+//Question 10
+#!/bin/python3
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'reverseArray' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts INTEGER_ARRAY a as parameter.
+#
+
+def reverseArray(a):
+    # Write your code here
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr_count = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    res = reverseArray(arr)
+
+    fptr.write(' '.join(map(str, res)))
+    fptr.write('\n')
+
+    fptr.close()        
